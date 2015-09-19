@@ -1,16 +1,16 @@
 @echo off
 setlocal ENABLEEXTENSIONS
-set DP0=%~dp0
-set ROOT=%DP0:~0,-1%
+set "ROOT=%~dp0"
+for %%a in ("%ROOT%\.") do set "ROOT=%%~fa"
 
-set PLATFORM=x86
-set OKIBA_BRANCH=develop
+set "PLATFORM=x86"
+set "OKIBA_BRANCH=develop"
 
 if not defined INSTALLER_URL (
-  set INSTALLER_URL=https://raw.githubusercontent.com/neguse11/cm3d2_plugins_okiba/%OKIBA_BRANCH%/scripts/installer.bat
+  set "INSTALLER_URL=https://raw.githubusercontent.com/neguse11/cm3d2_plugins_okiba/%OKIBA_BRANCH%/scripts/installer.bat"
 )
-set INSTALLER_FILE=installer.bat
-set INSTALLER_TMP=%INSTALLER_FILE%.tmp
+set "INSTALLER_FILE=installer.bat"
+set "INSTALLER_TMP=%INSTALLER_FILE%.tmp"
 
 powershell -Command "(New-Object Net.WebClient).DownloadFile('%INSTALLER_URL%', '%ROOT%\%INSTALLER_TMP%')"
 if not exist "%ROOT%\%INSTALLER_TMP%" (
