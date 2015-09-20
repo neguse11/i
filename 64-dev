@@ -1,4 +1,4 @@
-@echo on && setlocal ENABLEEXTENSIONS
+@echo off && setlocal ENABLEEXTENSIONS
 
 set "PLATFORM=x64"
 set "OKIBA_BRANCH=develop"
