@@ -54,13 +54,13 @@ foreach ($file in $vanillaFiles) {
 
 	# ファイルが存在しなければ
 	if(! (Test-Path $modFileName)) {
-		if($rel -match "CM3D2.*_Data\\Managed") {
-			# Managed\ 下はコピー
+		if($rel -match "GameData\\")
+			# GameData下はシンボリックリンクを生成
+			Set-SymbolicLinkFile -Path $vanillaFileName -SymbolicNewPath $modFileName
+		} else {
+			# その他はコピー
 			Write-Host "COPY : " $rel
 			Copy-Item $vanillaFileName $modFileName
-		} else {
-			# その他はシンボリックリンクを生成
-			Set-SymbolicLinkFile -Path $vanillaFileName -SymbolicNewPath $modFileName
 		}
 	}
 }
