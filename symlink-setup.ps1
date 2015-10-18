@@ -1,4 +1,4 @@
-# カレントディレクトリをコピー先とする
+﻿# カレントディレクトリをコピー先とする
 [string]$CM3D2_MOD_DIR=$pwd
 
 # 以下のコードなら、スクリプトの配置場所がコピー先になる
@@ -54,7 +54,7 @@ foreach ($file in $vanillaFiles) {
 
 	# ファイルが存在しなければ
 	if(! (Test-Path $modFileName)) {
-		if($rel -match "GameData\\")
+		if($rel -match "GameData\\") {
 			# GameData下はシンボリックリンクを生成
 			Set-SymbolicLinkFile -Path $vanillaFileName -SymbolicNewPath $modFileName
 		} else {
